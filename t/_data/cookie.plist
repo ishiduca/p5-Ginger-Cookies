@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Value</key>
+		<string>kgi9ba__</string>
+		<key>Domain</key>
+		<string>.hoge.to</string>
+		<key>Path</key>
+		<string>/</string>
+		<key>Name</key>
+		<string>.g.13</string>
+		<key>Expires</key>
+		<date>2123-08-29T04:34:23Z</date>
+	</dict>
+	<dict>
+		<key>Value</key>
+		<string>20156_3874455c47992f1_guda_4e642ae4a6bake</string>
+		<key>Domain</key>
+		<string>.hoge.to</string>
+		<key>Path</key>
+		<string>/</string>
+		<key>Name</key>
+		<string>PHPSESSID</string>
+		<key>Expires</key>
+		<date>2098-05-05T15:47:12Z</date>
+	</dict>
+</array>
+</plist>

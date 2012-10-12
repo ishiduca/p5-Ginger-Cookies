@@ -1,7 +1,7 @@
 package Ginger::Cookies;
 use 5.0100;
 use strict;
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use Carp         qw(carp croak);
 use Data::Clone  qw(clone);
@@ -20,6 +20,12 @@ sub BUILDARGS {
     my $class = shift;
     my %args  = @_;
     my $trait = delete $args{trait};
+
+    if ($args{file}) {
+        my $file  = $args{file};
+        -e $file and -f $file or
+            croak qq(! failed: can not open "${file}" $!);
+    }
 
     given ($trait) {
         when (undef) {
@@ -42,7 +48,11 @@ sub BUILDARGS {
 no Any::Moose;
 __PACKAGE__->meta->make_immutable;
 
-sub load { shift->trait->load(@_) }
+sub load {
+    my($self, $file) = @_;
+    -e $file and -f $file or croak qq(! faield: can not open "${file}" $!);
+    $self->trait->load($file);
+}
 
 sub _scan {
     my($self, $cb, $cookie_jar, $ref) = @_;
@@ -181,7 +191,7 @@ Ginger::Cookies - save and load HTTP Cookie jars for AnyEvent::HTTP.
 =head1 DESCRIPITION
 
 This library provides a way to load/save cookie_jar. and provides a way to
-exchanges a format between B<TTP::Cookies::*> and B<ANyEvent::HTTP>.
+exchanges a format between B<HTTP::Cookies::*> and B<AnyEvent::HTTP>.
 
 =head1 METHODS
 

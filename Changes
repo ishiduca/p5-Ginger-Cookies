@@ -1,5 +1,7 @@
 Revision history for Ginger-Cookies
 
-0.0.1  Fri Oct 12 10:54:59 2012
-       Initial release.
+0.02  Fri Oct 12 19:07:02 2012
+       fixed bug - around load file.
 
+0.01  Fri Oct 12 10:54:59 2012
+       Initial release.
