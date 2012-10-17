@@ -44,14 +44,14 @@ $ginger2->save( $cookie_jar => "./Cookies/Cookie.dat");
 
 ## Method
 
-### `new(%args)`
+### 1new(%args)
 
 
 retrun a cookie_jar client.
 this client can *load* a data of cookies form file and *save* a data.
 a loading/save mechanism is borrowed form `$args{trait}`.
 
-`$args{trait}' must be used a instance that is inherited *HTTP::Cookies*.
+`$args{trait}` must be used a instance that is inherited *HTTP::Cookies*.
 
 ```perl
 my $client = Ginger::Cookies->new(
@@ -68,11 +68,11 @@ my $client = Ginger::Cookies->new(
 );
 ```
 
-### `load( $cookies_file )`
+### load( $cookies_file )
 
 load a cookies from $cookies_file.
 
-### `cookie_jar`
+### cookie_jar
 
 return a $cookie_jar(HashRef) that can be used by AnyEvent::HTTP.
 
@@ -80,7 +80,7 @@ return a $cookie_jar(HashRef) that can be used by AnyEvent::HTTP.
 my $cookie_jar = $client->cookie_jar;
 ```
 
-### `save( $cookie_jar => $cookies_file )`
+### save( $cookie_jar => $cookies_file )
 
 save a cookies to $cookies_file.
 
