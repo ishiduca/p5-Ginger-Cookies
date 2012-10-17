@@ -44,7 +44,7 @@ $ginger2->save( $cookie_jar => "./Cookies/Cookie.dat");
 
 ## Method
 
-### 1new(%args)
+### new(%args)
 
 
 retrun a cookie_jar client.
