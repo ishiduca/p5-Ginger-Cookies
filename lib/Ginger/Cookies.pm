@@ -1,7 +1,7 @@
 package Ginger::Cookies;
 use 5.0100;
 use strict;
-our $VERSION = '0.02';
+our $VERSION = '0.021';
 
 use Carp         qw(carp croak);
 use Data::Clone  qw(clone);
@@ -23,7 +23,7 @@ sub BUILDARGS {
 
     if ($args{file}) {
         my $file  = $args{file};
-        -e $file and -f $file or
+        -f $file and -r _ and -s _ or
             croak qq(! failed: can not open "${file}" $!);
     }
 
@@ -50,7 +50,7 @@ __PACKAGE__->meta->make_immutable;
 
 sub load {
     my($self, $file) = @_;
-    -e $file and -f $file or croak qq(! faield: can not open "${file}" $!);
+    -f $file and -r _ and -s _ or croak qq(! faield: can not open "${file}" $!);
     $self->trait->load($file);
 }
 
@@ -118,7 +118,8 @@ sub set_cookie {
         $emp[5] = undef; # port
         $emp[6] = 0; # or 1, path_spec
         $emp[7] = delete $vals->{secure};
-        $emp[8] = delete $vals->{_expires};
+        #$emp[8] = delete $vals->{_expires};
+        $emp[8] = (delete $vals->{_expires}) - time();
         $emp[9] = 0; # or 1, discard
         $emp[10] = reduce { $a->{$b} = $vals->{$b}; $a }
                      {}, keys %{$vals}
